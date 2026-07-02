@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio | Inicio</title>
+
+    <link rel="icon" type="image/png" href="assets/icons/logo.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar" id="navbar">
+        <nav class="navbar__inner">
+
+        <!-- Secciones (izquierda) -->
+        <ul class="navbar__links" id="navLinks">
+            <li><a href="#inicio" class="navbar__link is-active" data-nav>Inicio</a></li>
+            <li><a href="#datos" class="navbar__link" data-nav>Datos</a></li>
+            <li><a href="#habilidades" class="navbar__link" data-nav>Habilidades</a></li>
+            <li><a href="#proyectos" class="navbar__link" data-nav>Proyectos</a></li>
+        </ul>
+
+        <!-- Logo (centro) -->
+        <a href="#inicio" class="navbar__logo" aria-label="Ir al inicio">
+            <!-- Espacio para el logo. Coloca tu archivo en assets/icons/logo.svg -->
+            <img src="assets/icons/logo.png" alt="Logo" />
+        </a>
+
+        <!-- Redes sociales (derecha) -->
+        <ul class="navbar__socials">
+            <li>
+            <a href="mailto:realiqueznoriega80@gmail.com" aria-label="Correo">
+                <!-- assets/icons/mail.svg -->
+                <img src="assets/icons/mail.png" alt="Correo" />
+            </a>
+            </li>
+            <li>
+            <a href="https://instagram.com/realiquez_ac/" target="_blank" rel="noopener" aria-label="Instagram">
+                <!-- assets/icons/instagram.svg -->
+                <img src="assets/icons/instagram.png" alt="Instagram" />
+            </a>
+            </li>
+            <li>
+            <a href="https://wa.me/50231100319" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <!-- assets/icons/whatsapp.svg -->
+                <img src="assets/icons/whatsapp.png" alt="WhatsApp" />
+            </a>
+            </li>
+            <li>
+            <a href="https://github.com/jrealiquez-2021549/" target="_blank" rel="noopener" aria-label="GitHub">
+                <!-- assets/icons/github.svg -->
+                <img src="assets/icons/github.png" alt="GitHub" />
+            </a>
+            </li>
+            <li>
+            <a href="https://facebook.com/proxyCS549/" target="_blank" rel="noopener" aria-label="Facebook">
+                <!-- assets/icons/facebook.svg -->
+                <img src="assets/icons/facebook.png" alt="Facebook" />
+            </a>
+            </li>
+        </ul>
+
+        <!-- Botón hamburguesa (solo visible en móvil) -->
+        <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ============ HERO / INICIO ============ -->
+        <section id="inicio" class="hero">
+        <!-- Espacio para la imagen de fondo. Coloca tu archivo en assets/images/background.jpg -->
+        <div class="hero__background"></div>
+        <div class="hero__overlay"></div>
+
+        <div class="hero__profile">
+
+            <!-- Espacio para la foto de perfil. Coloca tu archivo en assets/images/perfil.jpg -->
+            <div class="hero__photo">
+            <img src="assets/images/perfil.jpg" alt="Foto de Julio Gabriel Realiquez Noriega" />
+            </div>
+
+            <div class="hero__info">
+            <p class="hero__eyebrow">Datos personales</p>
+            <h1 class="hero__title">Julio Gabriel<br />Realiquez Noriega</h1>
+
+            <p class="hero__phrase">
+                “Tener miedo no es malo, es el miedo lo que me ha llevado tan lejos.”
+            </p>
+
+            <hr class="hero__divider" />
+
+            <dl class="hero__stats">
+                <div class="hero__stats-group">
+                <div class="hero__stat">
+                    <dt>Edad</dt>
+                    <dd>17 años</dd>
+                </div>
+                <div class="hero__stat">
+                    <dt>Educación</dt>
+                    <dd>6to. Diversificado</dd>
+                </div>
+                </div>
+                <div class="hero__stats-group">
+                <div class="hero__stat">
+                    <dt>Enfoque actual</dt>
+                    <dd>Futuro Ingeniero en Sistemas</dd>
+                </div>
+                <div class="hero__stat">
+                    <dt>Años desarrollando</dt>
+                    <dd>3 años</dd>
+                </div>
+                </div>
+                <div class="hero__stats-group">
+                <div class="hero__stat">
+                    <dt>Especialidad</dt>
+                    <dd>Desarrollador Full-Stack</dd>
+                </div>
+                <div class="hero__stat">
+                    <dt>Modalidad de trabajo</dt>
+                    <dd>Individual / Equipo</dd>
+                </div>
+                </div>
+                <div class="hero__stats-group">
+                <div class="hero__stat">
+                    <dt>Ubicación</dt>
+                    <dd>Guatemala, Guatemala</dd>
+                </div>
+                </div>
+            </dl>
+            </div>
+
+        </div>
+
+        <a href="#datos" class="hero__scroll" aria-label="Bajar a la siguiente sección">
+            <span></span>
+        </a>
+        </section>
+
+        <!-- ============ DATOS ============ -->
+        <section id="datos" class="section section--datos">
+        <div class="section__inner">
+            <span class="section__eyebrow">Un poco sobre mí</span>
+            <h2 class="section__title">Datos</h2>
+            <p class="section__text">
+            Estudiante de 6to. Diversificado en la Fundación Kinal, enfocado en
+            desarrollo full-stack: interfaces con React y React Native, y
+            microservicios con Node.js y Express. Me interesa construir productos
+            completos, de la base de datos a la interfaz, y seguir creciendo como
+            desarrollador dentro de la industria tecnológica.
+            </p>
+        </div>
+        </section>
+
+        <!-- ============ HABILIDADES ============ -->
+        <section id="habilidades" class="section section--habilidades">
+        <div class="section__inner">
+            <span class="section__eyebrow">Lo que sé hacer</span>
+            <h2 class="section__title">Habilidades</h2>
+            <div class="skills__grid">
+            <div class="skill__card">
+                <h3>Frontend</h3>
+                <p>React, React Native, Vite</p>
+            </div>
+            <div class="skill__card">
+                <h3>Backend</h3>
+                <p>Node.js, Express, JWT</p>
+            </div>
+            <div class="skill__card">
+                <h3>Bases de datos</h3>
+                <p>PostgreSQL, MongoDB</p>
+            </div>
+            <div class="skill__card">
+                <h3>Mobile</h3>
+                <p>Expo, EAS Build</p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- ============ PROYECTOS ============ -->
+        <section id="proyectos" class="section section--proyectos">
+        <div class="section__inner">
+            <span class="section__eyebrow">Trabajo reciente</span>
+            <h2 class="section__title">Proyectos</h2>
+            <div class="projects__grid">
+            <article class="project__card">
+                <h3>Nombre del proyecto</h3>
+                <p>Breve descripción del proyecto y las tecnologías utilizadas.</p>
+            </article>
+            <article class="project__card">
+                <h3>Nombre del proyecto</h3>
+                <p>Breve descripción del proyecto y las tecnologías utilizadas.</p>
+            </article>
+            <article class="project__card">
+                <h3>Nombre del proyecto</h3>
+                <p>Breve descripción del proyecto y las tecnologías utilizadas.</p>
+            </article>
+            </div>
+        </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Tu Nombre. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
