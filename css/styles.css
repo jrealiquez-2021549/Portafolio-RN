@@ -365,6 +365,34 @@ section[id] {
   margin-left: 0;
 }
 
+.hero__cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: #14181c;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.hero__cv-btn iconify-icon {
+  color: currentColor;
+}
+
+.hero__cv-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.35);
+}
+
 .hero__scroll {
   position: absolute;
   bottom: 120px;
