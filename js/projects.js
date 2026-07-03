@@ -108,12 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const track = root.querySelector('.project__carousel-track');
         const dots = root.querySelectorAll('.project__carousel-dot');
         const arrows = root.querySelectorAll('.project__carousel-arrow');
-
-        if (!track || project.images.length <= 1) return;
+        const slideImages = root.querySelectorAll('.project__carousel-slide img');
 
         let index = 0;
 
         const goTo = (i) => {
+        if (!track) return;
         index = (i + project.images.length) % project.images.length;
         track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((dot, di) => dot.classList.toggle('is-active', di === index));
@@ -121,8 +121,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resetAutoplay = () => {
         if (carouselTimer) clearInterval(carouselTimer);
-        carouselTimer = setInterval(() => goTo(index + 1), 5000);
+        if (project.images.length > 1) {
+            carouselTimer = setInterval(() => goTo(index + 1), 5000);
+        }
         };
+
+        // Al hacer clic en una imagen del carrusel, se abre el visor en grande
+        slideImages.forEach((img, i) => {
+        img.addEventListener('click', () => {
+            if (typeof window.openLightbox !== 'function') return;
+
+            if (carouselTimer) clearInterval(carouselTimer);
+
+            window.openLightbox(project.images, i, project.title, (finalIndex) => {
+            // Al cerrar el visor, el carrusel queda sincronizado con la
+            // última imagen vista y retoma el autoplay.
+            goTo(finalIndex);
+            resetAutoplay();
+            });
+        });
+        });
+
+        if (!track || project.images.length <= 1) return;
 
         dots.forEach((dot) => {
         dot.addEventListener('click', () => {
