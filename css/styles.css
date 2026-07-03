@@ -862,15 +862,27 @@ section[id] {
 }
 
 .project__detail--kp .project__detail-tint {
-  background: linear-gradient(120deg, rgba(19, 82, 90, 0.94), rgba(12, 46, 51, 0.9));
+  background: linear-gradient(
+    135deg,
+    rgba(37, 130, 141, 0.62),
+    rgba(15, 58, 64, 0.68)
+  );
 }
 
 .project__detail--kgh .project__detail-tint {
-  background: linear-gradient(120deg, rgba(151, 79, 30, 0.94), rgba(77, 37, 15, 0.9));
+  background: linear-gradient(
+    135deg,
+    rgba(197, 106, 42, 0.62),
+    rgba(107, 51, 20, 0.68)
+  );
 }
 
 .project__detail--kb .project__detail-tint {
-  background: linear-gradient(120deg, rgba(15, 27, 68, 0.95), rgba(7, 10, 28, 0.92));
+  background: linear-gradient(
+    135deg,
+    rgba(23, 40, 99, 0.62),
+    rgba(9, 14, 38, 0.68)
+  );
 }
 
 .project__detail-inner {
