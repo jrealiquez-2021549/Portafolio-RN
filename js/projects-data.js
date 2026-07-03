@@ -15,8 +15,8 @@ const PROJECTS_DATA = [
         'assets/images/kp-03.jpg',
         ],
         links: {
-        repo: '#',
-        presentacion: '#',
+        repo: 'https://github.com/jrealiquez-2021549/Kinal-Pets.git',
+        presentacion: 'https://canva.link/519j8s8jx4mcwqs',
         sitio: null, // Kinal Pets es una app de escritorio, no tiene sitio en vivo
         },
     },
@@ -36,8 +36,8 @@ const PROJECTS_DATA = [
         ],
         links: {
         repo: 'https://github.com/jrealiquez-2021549/AppMovil-SistemaRestaurante.git',
-        presentacion: '#',
-        sitio: '#',
+        presentacion: 'https://canva.link/hurx7zcsdktro9u',
+        sitio: 'https://kinal-gourmet-web.vercel.app/',
         },
     },
     {
@@ -56,8 +56,8 @@ const PROJECTS_DATA = [
         ],
         links: {
         repo: 'https://github.com/aalvarez-2024004/AppMovil-SistemaBancario.git',
-        presentacion: '#',
-        sitio: '#',
+        presentacion: 'https://canva.link/wm5v3aom7ixogmt',
+        sitio: 'https://app-movil-sistema-bancario-hfca.vercel.app/',
         },
     },
 ];
