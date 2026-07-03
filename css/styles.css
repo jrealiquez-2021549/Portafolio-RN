@@ -1,7 +1,5 @@
 /* =====================================================
-   FUENTES
-   Coloca los archivos de fuente en assets/fonts/
-   (formatos .woff2 y .woff recomendados)
+  FUENTES
 ===================================================== */
 @font-face {
   font-family: 'TextaAlt-Heavy';
@@ -20,10 +18,7 @@
 }
 
 /* =====================================================
-   VARIABLES GLOBALES
-   Paleta inspirada en el concepto: verdes profundos del
-   valle y la montaña, blanco cálido del cielo/nieve y un
-   acento terracota tomado de los techos de las casas.
+  VARIABLES GLOBALES
 ===================================================== */
 :root {
   --font-heading: 'TextaAlt-Heavy', 'Arial Narrow', sans-serif;
@@ -50,7 +45,7 @@
 }
 
 /* =====================================================
-   RESET BÁSICO
+  RESET BÁSICO
 ===================================================== */
 * {
   box-sizing: border-box;
@@ -89,7 +84,7 @@ section[id] {
 }
 
 /* =====================================================
-   NAVBAR
+  NAVBAR
 ===================================================== */
 .navbar {
   position: fixed;
@@ -107,7 +102,6 @@ section[id] {
               box-shadow var(--transition-base);
 }
 
-/* Estado sólido: se activa vía JS cuando el usuario baja en la página */
 .navbar.is-scrolled {
   background-color: var(--color-navbar-solid);
   backdrop-filter: blur(14px);
@@ -127,7 +121,6 @@ section[id] {
   gap: 24px;
 }
 
-/* --- Enlaces de navegación (izquierda) --- */
 .navbar__links {
   display: flex;
   align-items: center;
@@ -168,7 +161,6 @@ section[id] {
   transform: scaleX(1);
 }
 
-/* --- Logo (centro) --- */
 .navbar__logo {
   justify-self: center;
   display: flex;
@@ -186,7 +178,6 @@ section[id] {
   height: 36px;
 }
 
-/* --- Redes sociales (derecha) --- */
 .navbar__socials {
   display: flex;
   align-items: center;
@@ -206,7 +197,6 @@ section[id] {
   transform: translateY(-2px);
 }
 
-/* --- Botón hamburguesa (oculto en escritorio) --- */
 .navbar__toggle {
   display: none;
   flex-direction: column;
@@ -229,9 +219,7 @@ section[id] {
 }
 
 /* =====================================================
-   HERO / INICIO
-   Layout: foto circular a la izquierda + presentación
-   (rol, nombre, frase, datos rápidos) a la derecha.
+  HERO / INICIO
 ===================================================== */
 .hero {
   position: relative;
@@ -253,9 +241,6 @@ section[id] {
   z-index: 0;
 }
 
-/* Doble degradado: uno vertical para dar profundidad general,
-   y uno horizontal (scrim) para asegurar que el texto se lea
-   bien sin importar qué tan clara sea la foto de fondo final. */
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -288,7 +273,6 @@ section[id] {
   gap: 56px;
 }
 
-/* --- Foto de perfil --- */
 .hero__photo {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -305,7 +289,6 @@ section[id] {
   object-fit: cover;
 }
 
-/* --- Bloque de texto --- */
 .hero__info {
   text-align: left;
 }
@@ -347,7 +330,6 @@ section[id] {
   margin-bottom: 28px;
 }
 
-/* --- Datos rápidos (edad, grado, estado, experiencia) --- */
 .hero__stats {
   display: flex;
   flex-wrap: wrap;
@@ -414,7 +396,7 @@ section[id] {
 }
 
 /* =====================================================
-   SECCIONES GENERALES
+  SECCIONES GENERALES
 ===================================================== */
 .section {
   padding: 120px 24px;
@@ -433,13 +415,6 @@ section[id] {
   padding-top: 96px;
 }
 
-/* La imagen es un lienzo de 4009x389px: ~22% superior es la punta de
-   triángulos (transparente) y el resto es color sólido idéntico a
-   --color-bg-dark-alt. Al subirla -22% de su propia altura, el punto
-   donde termina el triángulo y empieza el sólido queda justo en el
-   borde superior de la sección, así el color sólido se funde con el
-   fondo de la sección sin costura, y las puntas transparentes dejan
-   ver el fondo del hero que está inmediatamente arriba. */
 .section__margin {
   position: absolute;
   top: 0;
@@ -474,20 +449,16 @@ section[id] {
   font-size: clamp(1.15rem, 2.4vw, 1.9rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 18px clamp(84px, 9vw, 128px) 18px 32px;
+  padding: 18px 48px 18px 32px;
   border-radius: 999px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
 }
 
-/* El ícono sobresale de la pastilla: se ancla a su esquina
-   superior derecha y se desplaza hacia arriba para "salirse".
-   Se deja separado del texto usando el padding-right de la pastilla. */
 .section__badge-icon {
   position: absolute;
-  right: -20px;
-  top: 0;
-  transform: translate(0, -58%);
-  width: clamp(64px, 7vw, 104px);
+  right: -80px;
+  bottom: 0;
+  width: clamp(84px, 8.5vw, 132px);
   height: auto;
   z-index: 4;
   pointer-events: none;
@@ -500,20 +471,6 @@ section[id] {
   z-index: 2;
 }
 
-/* =====================================================
-   REVEAL AL HACER SCROLL
-   Los .section (datos/habilidades/proyectos) empiezan ocultos
-   y se marcan como .is-visible vía JS (IntersectionObserver)
-   cuando entran en el viewport. Esto evita que la pastilla del
-   título y el margen de triángulos se alcancen a ver mientras
-   todavía se está en Inicio.
-
-   El margen y la pastilla ya tienen su propio "transform" para
-   posicionarse (translateY(-22%) y translate(-50%,-50%)), así
-   que aquí solo se anima su "opacity" para no pisar esos valores.
-   El contenido de texto (.section__inner) sí puede animarse con
-   opacity + translateY porque no usa transform para posicionarse.
-===================================================== */
 .section__margin,
 .section__badge {
   opacity: 0;
@@ -571,7 +528,6 @@ section[id] {
   font-size: 1.05rem;
 }
 
-/* --- Grids de tarjetas (Habilidades / Proyectos) --- */
 .skills__grid,
 .projects__grid {
   display: grid;
@@ -612,7 +568,7 @@ section[id] {
 }
 
 /* =====================================================
-   FOOTER
+  FOOTER
 ===================================================== */
 .footer {
   padding: 32px 24px;
@@ -624,7 +580,7 @@ section[id] {
 }
 
 /* =====================================================
-   RESPONSIVE
+  RESPONSIVE
 ===================================================== */
 @media (max-width: 860px) {
   .navbar__inner {
@@ -729,12 +685,12 @@ section[id] {
   }
 
   .section__badge-pill {
-    padding: 14px 68px 14px 24px;
+    padding: 14px 34px 14px 24px;
   }
 
   .section__badge-icon {
-    width: clamp(52px, 12vw, 76px);
-    right: -12px;
+    width: clamp(60px, 11vw, 88px);
+    right: -36px;
   }
 }
 
@@ -774,17 +730,17 @@ section[id] {
 
   .section__badge-pill {
     font-size: 1rem;
-    padding: 12px 56px 12px 20px;
+    padding: 12px 30px 12px 20px;
   }
 
   .section__badge-icon {
-    width: 52px;
-    right: -10px;
+    width: 62px;
+    right: -28px;
   }
 }
 
 /* =====================================================
-   ACCESIBILIDAD
+  ACCESIBILIDAD
 ===================================================== */
 a:focus-visible,
 button:focus-visible {
