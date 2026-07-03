@@ -7,6 +7,7 @@
 
     <link rel="icon" type="image/png" href="assets/icons/logo.png" />
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
     </head>
     <body>
 
@@ -196,24 +197,18 @@
         <div class="section__inner">
             <span class="section__eyebrow">Lo que sé hacer</span>
             <h2 class="section__title">Habilidades</h2>
-            <div class="skills__grid">
-            <div class="skill__card">
-                <h3>Frontend</h3>
-                <p>React, React Native, Vite</p>
-            </div>
-            <div class="skill__card">
-                <h3>Backend</h3>
-                <p>Node.js, Express, JWT</p>
-            </div>
-            <div class="skill__card">
-                <h3>Bases de datos</h3>
-                <p>PostgreSQL, MongoDB</p>
-            </div>
-            <div class="skill__card">
-                <h3>Mobile</h3>
-                <p>Expo, EAS Build</p>
-            </div>
-            </div>
+            <p class="section__text skills__intro">
+            Tecnologías y herramientas que he tenido la oportunidad de aprender 
+            y aplicar en mis proyectos hasta el momento. Esta sección muestra 
+            las áreas en las que he venido trabajando, agrupadas por categorías 
+            para reflejar mi nivel de familiaridad y práctica actual con cada una de ellas.
+            </p>
+
+            <!-- Pestañas de categorías (generadas por JS) -->
+            <div class="skills__tabs" id="skillsTabs" role="tablist"></div>
+
+            <!-- Paneles de habilidades (generados por JS) -->
+            <div class="skills__panels" id="skillsPanels"></div>
         </div>
         </section>
 
@@ -245,6 +240,8 @@
         <p>&copy; <span id="year"></span> Tu Nombre. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="js/skills-data.js"></script>
+    <script src="js/skills.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
