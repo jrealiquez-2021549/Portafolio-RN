@@ -526,6 +526,11 @@ section[id] {
   }
 }
 
+.section--proyectos {
+  position: relative;
+  overflow: visible;
+}
+
 .section__margin {
   position: absolute;
   top: 0;
