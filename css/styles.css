@@ -413,6 +413,12 @@ section[id] {
   position: relative;
   overflow: visible;
   padding-top: 96px;
+
+  /* --- Fondo con imagen --- */
+  background-image: url("../assets/images/datos-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .section__margin {
@@ -428,7 +434,6 @@ section[id] {
   user-select: none;
 }
 
-/* Pastilla centrada, montada justo sobre la línea de triángulos */
 .section__badge {
   position: absolute;
   top: 0;
@@ -471,6 +476,9 @@ section[id] {
   z-index: 2;
 }
 
+/* =====================================================
+  REVEAL AL HACER SCROLL
+===================================================== */
 .section__margin,
 .section__badge {
   opacity: 0;
@@ -526,6 +534,46 @@ section[id] {
   max-width: min(920px, 100%);
   color: var(--color-text-muted);
   font-size: 1.05rem;
+}
+
+.section__inner--about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.section__about-text {
+  flex: 1 1 auto;
+  max-width: 520px;
+}
+
+.section__about-text .section__text {
+  max-width: 100%;
+}
+
+.section__about-image {
+  flex: 0 0 auto;
+  width: min(45%, 1000px);
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .section__inner--about {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .section__about-text {
+    max-width: 100%;
+  }
+
+  .section__about-image {
+    width: min(70%, 360px);
+    margin: 0 auto;
+  }
 }
 
 .skills__grid,
@@ -601,7 +649,6 @@ section[id] {
     display: flex;
   }
 
-  /* Menú móvil desplegable, controlado por JS con la clase .nav-open en <body> */
   body.nav-open .navbar__links,
   body.nav-open .navbar__socials {
     display: flex;
