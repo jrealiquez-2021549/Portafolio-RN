@@ -424,7 +424,7 @@ section[id] {
 /* --- Sección Habilidades: foto de fondo + overlay oscuro --- */
 .section--habilidades {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 
   background-image: url("../assets/images/habilidades-bg.jpg");
   background-size: cover;
@@ -566,8 +566,8 @@ section[id] {
 
 .section__badge-icon {
   position: absolute;
-  right: -80px;
-  bottom: 0;
+  right: -85px;
+  bottom: -20px;
   width: clamp(84px, 8.5vw, 132px);
   height: auto;
   z-index: 4;
