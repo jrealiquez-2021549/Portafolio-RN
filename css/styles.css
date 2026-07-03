@@ -385,7 +385,7 @@ section[id] {
 
 .hero__scroll {
   position: absolute;
-  bottom: 36px;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -426,9 +426,124 @@ section[id] {
   background-color: var(--color-bg-dark-alt);
 }
 
+/* --- Sección Datos: margen de triángulos + pastilla de título --- */
+.section--datos {
+  position: relative;
+  overflow: visible;
+  padding-top: 96px;
+}
+
+/* La imagen es un lienzo de 4009x389px: ~22% superior es la punta de
+   triángulos (transparente) y el resto es color sólido idéntico a
+   --color-bg-dark-alt. Al subirla -22% de su propia altura, el punto
+   donde termina el triángulo y empieza el sólido queda justo en el
+   borde superior de la sección, así el color sólido se funde con el
+   fondo de la sección sin costura, y las puntas transparentes dejan
+   ver el fondo del hero que está inmediatamente arriba. */
+.section__margin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(-22%);
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+/* Pastilla centrada, montada justo sobre la línea de triángulos */
+.section__badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+}
+
+.section__badge-pill {
+  display: inline-block;
+  white-space: nowrap;
+  background-color: var(--color-text);
+  color: var(--color-bg-dark-alt);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.15rem, 2.4vw, 1.9rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 18px clamp(84px, 9vw, 128px) 18px 32px;
+  border-radius: 999px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* El ícono sobresale de la pastilla: se ancla a su esquina
+   superior derecha y se desplaza hacia arriba para "salirse".
+   Se deja separado del texto usando el padding-right de la pastilla. */
+.section__badge-icon {
+  position: absolute;
+  right: -20px;
+  top: 0;
+  transform: translate(0, -58%);
+  width: clamp(64px, 7vw, 104px);
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+}
+
 .section__inner {
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================================
+   REVEAL AL HACER SCROLL
+   Los .section (datos/habilidades/proyectos) empiezan ocultos
+   y se marcan como .is-visible vía JS (IntersectionObserver)
+   cuando entran en el viewport. Esto evita que la pastilla del
+   título y el margen de triángulos se alcancen a ver mientras
+   todavía se está en Inicio.
+
+   El margen y la pastilla ya tienen su propio "transform" para
+   posicionarse (translateY(-22%) y translate(-50%,-50%)), así
+   que aquí solo se anima su "opacity" para no pisar esos valores.
+   El contenido de texto (.section__inner) sí puede animarse con
+   opacity + translateY porque no usa transform para posicionarse.
+===================================================== */
+.section__margin,
+.section__badge {
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.section.is-visible .section__margin,
+.section.is-visible .section__badge {
+  opacity: 1;
+}
+
+.section .section__inner {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+}
+
+.section.is-visible .section__inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section__margin,
+  .section__badge,
+  .section .section__inner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .section__eyebrow {
@@ -451,7 +566,7 @@ section[id] {
 }
 
 .section__text {
-  max-width: 620px;
+  max-width: min(920px, 100%);
   color: var(--color-text-muted);
   font-size: 1.05rem;
 }
@@ -604,6 +719,23 @@ section[id] {
   .hero__stats {
     justify-content: center;
   }
+
+  .hero__scroll {
+    bottom: 90px;
+  }
+
+  .section--datos {
+    padding-top: 72px;
+  }
+
+  .section__badge-pill {
+    padding: 14px 68px 14px 24px;
+  }
+
+  .section__badge-icon {
+    width: clamp(52px, 12vw, 76px);
+    right: -12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -630,6 +762,24 @@ section[id] {
   .hero__stats-group:first-child {
     padding-bottom: 6px;
     border-bottom: 1px solid rgba(245, 241, 230, 0.25);
+  }
+
+  .hero__scroll {
+    bottom: 78px;
+  }
+
+  .section--datos {
+    padding-top: 56px;
+  }
+
+  .section__badge-pill {
+    font-size: 1rem;
+    padding: 12px 56px 12px 20px;
+  }
+
+  .section__badge-icon {
+    width: 52px;
+    right: -10px;
   }
 }
 

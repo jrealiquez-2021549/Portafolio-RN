@@ -76,4 +76,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
     }
+
+    /* -------------------------------------------------
+        5) Reveal al hacer scroll
+        Las secciones (Datos, Habilidades, Proyectos) se
+        marcan como visibles solo cuando el usuario baja
+        hasta ellas, así la pastilla de "Descripción" y el
+        margen de triángulos no se ven desde Inicio.
+    ------------------------------------------------- */
+    const revealSections = document.querySelectorAll('main .section');
+
+    if ('IntersectionObserver' in window && revealSections.length) {
+        const revealObserver = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target); // se revela una sola vez
+            }
+            });
+        },
+        {
+            threshold: 0.15,
+            rootMargin: '0px 0px -10% 0px',
+        }
+        );
+
+        revealSections.forEach((section) => revealObserver.observe(section));
+    } else {
+        // Sin soporte para IntersectionObserver: mostrar todo de una vez
+        revealSections.forEach((section) => section.classList.add('is-visible'));
+    }
 });
