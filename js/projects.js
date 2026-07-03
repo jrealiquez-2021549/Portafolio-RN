@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
 
-        <div class="project__carousel" data-carousel>
+        <div class="project__carousel project__carousel--${project.id}" data-carousel>
             <div class="project__carousel-track">
             ${project.images
                 .map(

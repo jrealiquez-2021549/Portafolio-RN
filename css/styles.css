@@ -952,8 +952,16 @@ section[id] {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 16 / 11;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+.project__carousel--kp {
+  aspect-ratio: 1129 / 650;
+}
+
+.project__carousel--kgh,
+.project__carousel--kb {
+  aspect-ratio: 2732 / 1354;
 }
 
 .project__carousel-track {
