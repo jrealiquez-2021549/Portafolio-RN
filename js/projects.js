@@ -33,6 +33,57 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.innerHTML = PROJECTS_DATA.map(buildCard).join('');
 
     /* -------------------------------------------------
+        1.1) Carrusel horizontal de tarjetas de proyecto
+        Mantiene siempre 3 tarjetas visibles en escritorio
+        (2 en tablet, 1 en móvil) y permite desplazarse con
+        flechas cuando hay más proyectos de los que caben.
+    ------------------------------------------------- */
+    const projectsPrev = document.getElementById('projectsPrev');
+    const projectsNext = document.getElementById('projectsNext');
+
+    if (projectsPrev && projectsNext) {
+        let cardIndex = 0;
+
+        const getCardsPerView = () => {
+        const width = window.innerWidth;
+        if (width <= 560) return 1;
+        if (width <= 900) return 2;
+        return 3;
+        };
+
+        const getMaxIndex = () => Math.max(0, PROJECTS_DATA.length - getCardsPerView());
+
+        const renderCarousel = () => {
+        const cardEls = grid.querySelectorAll('.project__card');
+        if (!cardEls.length) return;
+
+        const maxIndex = getMaxIndex();
+        cardIndex = Math.min(cardIndex, maxIndex);
+
+        const cardWidth = cardEls[0].getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(grid).columnGap || getComputedStyle(grid).gap) || 0;
+        grid.style.transform = `translateX(-${cardIndex * (cardWidth + gap)}px)`;
+
+        const needsArrows = maxIndex > 0;
+        projectsPrev.classList.toggle('is-hidden', !needsArrows);
+        projectsNext.classList.toggle('is-hidden', !needsArrows);
+        projectsPrev.disabled = cardIndex === 0;
+        projectsNext.disabled = cardIndex >= maxIndex;
+        };
+
+        const goToCard = (index) => {
+        cardIndex = Math.min(Math.max(index, 0), getMaxIndex());
+        renderCarousel();
+        };
+
+        projectsPrev.addEventListener('click', () => goToCard(cardIndex - 1));
+        projectsNext.addEventListener('click', () => goToCard(cardIndex + 1));
+        window.addEventListener('resize', renderCarousel);
+
+        renderCarousel();
+    }
+
+    /* -------------------------------------------------
         2) Construir el panel de detalle (con carrusel)
     ------------------------------------------------- */
     const buildActionButton = (href, icon, label, variant) => {
@@ -184,7 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
         detailSection.classList.remove(
         'project__detail--kp',
         'project__detail--kgh',
-        'project__detail--kb'
+        'project__detail--kb',
+        'project__detail--ek'
         );
         detailSection.classList.add(`project__detail--${project.id}`);
         detailSection.style.backgroundImage = `url('${project.background}')`;
