@@ -448,6 +448,84 @@ section[id] {
   }
 }
 
+/* =====================================================
+  PÉTALOS CAYENDO (Hero y Habilidades)
+===================================================== */
+.petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -8%;
+  left: var(--left);
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 0%,
+    #F8F9FF 18%,
+    #E8ECFB 38%,
+    #D1D2EE 62%,
+    #B8C7F4 82%,
+    #A0B4F1 100%
+  );
+  border-radius: 0% 70% 70% 70%;
+  animation: petalFall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  will-change: transform, opacity;
+}
+
+.petal--alt {
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 0%,
+    #F8F9FF 18%,
+    #E8ECFB 38%,
+    #D1D2EE 62%,
+    #B8C7F4 82%,
+    #A0B4F1 100%
+  );
+  border-radius: 70% 0% 70% 70%;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translate(0, -10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--opacity);
+  }
+  25% {
+    transform: translate(calc(var(--drift) * 0.5), 25vh) rotate(90deg);
+  }
+  50% {
+    transform: translate(var(--drift), 50vh) rotate(180deg);
+  }
+  75% {
+    transform: translate(calc(var(--drift) * 0.5), 75vh) rotate(270deg);
+  }
+  90% {
+    opacity: var(--opacity);
+  }
+  100% {
+    transform: translate(0, 110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petals {
+    display: none;
+  }
+}
+
 .section__margin {
   position: absolute;
   top: 0;
