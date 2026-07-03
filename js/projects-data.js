@@ -46,7 +46,7 @@ const PROJECTS_DATA = [
         id: 'kb',
         title: 'Kinal Bank',
         shortDescription:
-        'Plataforma web y móvil desarrollada para optimizar la administración de bancos, incluyendo la gestión de transferencias, depósitos y transacciones.',
+        'Sistema bancario con plataforma web y aplicación móvil que permite gestionar cuentas, transferencias, autenticación de usuarios y consultas financieras de forma segura.',
         description:
         'Kinal Bank es una plataforma de banca digital web y móvil, diseñada para optimizar la administración de cuentas, transferencias, depósitos y transacciones. El sistema incorpora un backend con Node.js y Express, utilizando autenticación mediante JWT y control de roles para la protección de datos, junto a interfaces en React y React Native, garantizando un control operativo eficiente y totalmente seguro.',
         icon: 'assets/icons/icon-kb.png',
