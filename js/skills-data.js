@@ -1,4 +1,3 @@
-
 const SKILLS_DATA = [
   {
     id: 'lenguajes',
@@ -29,6 +28,7 @@ const SKILLS_DATA = [
       { name: 'Vite', percent: 88, icon: 'simple-icons:vite' },
       { name: 'Tailwind CSS', percent: 87, icon: 'simple-icons:tailwindcss' },
       { name: 'Framer Motion', percent: 80, icon: 'simple-icons:framer' },
+      { name: 'GSAP (GreenSock Animation Platform)', percent: 82, icon: 'simple-icons:greensock' },
     ],
   },
   {
@@ -54,6 +54,7 @@ const SKILLS_DATA = [
       { name: 'Helmet', percent: 82, icon: 'tabler:shield' },
       { name: 'CORS', percent: 90, icon: 'tabler:world' },
       { name: 'Morgan', percent: 80, icon: 'tabler:file-text' },
+      { name: 'UUID', percent: 85, icon: 'tabler:fingerprint' },
     ],
   },
   {
@@ -98,6 +99,7 @@ const SKILLS_DATA = [
       { name: 'BCrypt', percent: 88, icon: 'tabler:shield-lock' },
       { name: 'Control de roles', percent: 88, icon: 'tabler:users-group' },
       { name: 'Middleware de autenticación', percent: 90, icon: 'tabler:shield-check' },
+      { name: 'Express Rate Limit', percent: 80, icon: 'tabler:gauge' },
     ],
   },
   {
@@ -151,6 +153,32 @@ const SKILLS_DATA = [
       { name: 'ESLint', percent: 82, icon: 'simple-icons:eslint' },
       { name: 'Nodemon', percent: 85, icon: 'simple-icons:nodemon' },
       { name: 'PostCSS', percent: 80, icon: 'simple-icons:postcss' },
+      { name: 'PNPM Workspaces', percent: 78, icon: 'simple-icons:pnpm' },
+      { name: 'Cross-env', percent: 82, icon: 'tabler:settings' },
+    ],
+  },
+  {
+    id: 'ia',
+    title: 'Inteligencia Artificial',
+    items: [
+      { name: 'Google Generative AI (Gemini)', percent: 80, icon: 'simple-icons:googlegemini' },
+      { name: 'Google GenAI SDK', percent: 80, icon: 'simple-icons:google' },
+      { name: 'Google Cloud Vision API', percent: 82, icon: 'simple-icons:googlecloud' },
+    ],
+  },
+  {
+    id: 'documentacion',
+    title: 'Documentación de APIs',
+    items: [
+      { name: 'Swagger UI Express', percent: 85, icon: 'simple-icons:swagger' },
+      { name: 'Swagger JSDoc', percent: 84, icon: 'simple-icons:swagger' },
+    ],
+  },
+  {
+    id: 'mapas',
+    title: 'Mapas y geolocalización',
+    items: [
+      { name: 'opening_hours', percent: 75, icon: 'tabler:clock' },
     ],
   },
   {
