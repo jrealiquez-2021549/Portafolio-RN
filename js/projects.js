@@ -1,9 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('projectsGrid');
+    const detailSection = document.getElementById('proyectoDetalle');
     const detail = document.getElementById('projectDetail');
 
-    if (!grid || !detail || typeof PROJECTS_DATA === 'undefined') {
+    if (!grid || !detail || !detailSection || typeof PROJECTS_DATA === 'undefined') {
         return;
     }
 
@@ -50,9 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const buildDetailContent = (project) => `
-        <div class="project__detail-bg" style="background-image:url('${project.background}')" aria-hidden="true"></div>
-        <div class="project__detail-tint" aria-hidden="true"></div>
-
         <div class="project__detail-inner">
         <div class="project__detail-text">
             <h3>${project.title}</h3>
@@ -160,8 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (carouselTimer) clearInterval(carouselTimer);
 
-        detail.className = `project__detail project__detail--${project.id} is-active`;
+        // El fondo y el tinte de color ahora viven en la sección completa
+        // (no solo en la tarjeta de detalle), sin perder clases como
+        // "is-visible" que controla la animación de aparición al hacer scroll.
+        detailSection.classList.remove(
+        'project__detail--kp',
+        'project__detail--kgh',
+        'project__detail--kb'
+        );
+        detailSection.classList.add(`project__detail--${project.id}`);
+        detailSection.style.backgroundImage = `url('${project.background}')`;
+
+        detail.classList.remove('is-active');
         detail.innerHTML = buildDetailContent(project);
+        // Fuerza un reflow para que la animación de aparición se repita
+        // cada vez que se selecciona un proyecto distinto.
+        void detail.offsetWidth;
+        detail.classList.add('is-active');
 
         cards().forEach((card) => {
         const active = card.dataset.project === id;
