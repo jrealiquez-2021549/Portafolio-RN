@@ -324,6 +324,19 @@
     </div>
 
 
+    <!-- ============ TOCADISCOS (MÚSICA DE FONDO) ============ -->
+    <div class="turntable" id="turntable">
+        <button class="turntable__disc-btn" id="turntableBtn" type="button" aria-pressed="false" aria-label="Reproducir música de fondo">
+        <span class="turntable__vinyl">
+            <span class="turntable__label"></span>
+        </span>
+        <span class="turntable__arm"></span>
+        </button>
+    </div>
+
+    <!-- Contenedor oculto: aquí se monta el reproductor de YouTube (solo audio) -->
+    <div id="turntableYouTube" class="turntable__yt" aria-hidden="true"></div>
+
     <script src="js/skills-data.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/projects-data.js"></script>
@@ -331,5 +344,6 @@
     <script src="js/projects.js"></script>
     <script src="js/petals.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/turntable.js"></script>
 </body>
 </html>

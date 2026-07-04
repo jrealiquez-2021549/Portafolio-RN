@@ -1092,7 +1092,7 @@ section[id] {
 
 .project__btn--sitio {
   background-color: var(--btn-sitio);
-  color: #FFFFFF;
+  color: #14181c;
 }
 
 .project__btn:hover {
@@ -1628,6 +1628,8 @@ body.lightbox-open {
   opacity: 1;
 }
 
+/* Capa de fondo suave: oscurece lo justo para enfocar el visor
+   sin ocultar por completo la página detrás. */
 .lightbox__backdrop {
   position: absolute;
   inset: 0;
@@ -1692,7 +1694,7 @@ body.lightbox-open {
   max-height: 100%;
   object-fit: contain;
   border-radius: 14px;
-  box-shadow: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
 
 /* ---- Controles: efecto glass con acento dorado en hover ---- */
@@ -1753,11 +1755,11 @@ body.lightbox-open {
 }
 
 .lightbox__arrow--prev {
-  left: -70px;
+  left: 10px;
 }
 
 .lightbox__arrow--next {
-  right: -70px;
+  right: 10px;
 }
 
 /* ---- Navegador de posición: entre la foto y el listado ---- */
@@ -1791,7 +1793,6 @@ body.lightbox-open {
 /* ---- Listado de miniaturas: todas las fotos del proyecto ---- */
 .lightbox__thumbs {
   display: flex;
-  justify-content: center;
   gap: 10px;
   width: 100%;
   padding: 4px 2px 6px;
@@ -1857,11 +1858,11 @@ body.lightbox-open {
   }
 
   .lightbox__arrow--prev {
-    left: 0;
+    left: 4px;
   }
 
   .lightbox__arrow--next {
-    right: 0;
+    right: 4px;
   }
 
   .lightbox__close {
@@ -1873,9 +1874,177 @@ body.lightbox-open {
     width: 64px;
     height: 44px;
   }
+}
 
-  .lightbox__frame {
-    padding: 0 44px;
+/* =====================================================
+  TOCADISCOS: botón flotante que reproduce música de fondo
+===================================================== */
+.turntable {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 600;
+}
+
+.turntable__disc-btn {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 32% 28%, #223229 0%, #0E1712 68%);
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.5),
+    0 0 0 3px rgba(209, 187, 124, 0.28),
+    0 0 0 1px rgba(245, 241, 230, 0.06) inset;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.turntable__disc-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.55),
+    0 0 0 3px rgba(209, 187, 124, 0.55),
+    0 0 24px rgba(209, 187, 124, 0.25);
+}
+
+.turntable__disc-btn::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(209, 187, 124, 0.35);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.turntable.is-playing .turntable__disc-btn::before {
+  opacity: 1;
+  animation: turntable-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes turntable-pulse {
+  0%, 100% {
+    transform: scale(0.94);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.15;
+  }
+}
+
+/* ---- Disco de vinilo: gira solo mientras suena la música ---- */
+.turntable__vinyl {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle at center, #1c2a22 0 2px, #070d0a 2px 4px);
+  box-shadow: inset 0 0 0 2px rgba(209, 187, 124, 0.12);
+  animation: turntable-spin 2.4s linear infinite;
+  animation-play-state: paused;
+}
+
+.turntable.is-playing .turntable__vinyl {
+  animation-play-state: running;
+}
+
+.turntable__label {
+  position: absolute;
+  inset: 25px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), #efd9a0);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4) inset;
+}
+
+.turntable__label::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0E1712;
+}
+
+/* ---- Brazo: descansa afuera y se posa sobre el disco al reproducir ---- */
+.turntable__arm {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 42px;
+  height: 5px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-accent), rgba(209, 187, 124, 0.35));
+  transform-origin: 100% 50%;
+  transform: rotate(-34deg);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.turntable__arm::after {
+  content: '';
+  position: absolute;
+  top: -3.5px;
+  right: -3.5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px rgba(209, 187, 124, 0.6);
+}
+
+.turntable.is-playing .turntable__arm {
+  transform: rotate(-4deg);
+}
+
+@keyframes turntable-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reproductor de YouTube: existe en el DOM pero no se ve (solo audio) */
+.turntable__yt {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .turntable {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .turntable__disc-btn {
+    width: 78px;
+    height: 78px;
+  }
+
+  .turntable__vinyl {
+    width: 58px;
+    height: 58px;
+  }
+
+  .turntable__label {
+    inset: 20px;
+  }
+
+  .turntable__arm {
+    width: 34px;
   }
 }
 
