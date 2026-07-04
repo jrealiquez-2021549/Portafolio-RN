@@ -1425,12 +1425,44 @@ section[id] {
   FOOTER
 ===================================================== */
 .footer {
-  padding: 32px 24px;
+  position: relative;
+  overflow: visible;
+  padding: 96px 24px 32px;
   text-align: center;
-  background-color: var(--color-bg-dark);
   color: var(--color-text-muted);
   font-size: 0.85rem;
-  border-top: 1px solid rgba(245, 241, 230, 0.08);
+  
+  background-image: url("../assets/images/datos-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.footer .section__margin {
+  opacity: 1;
+  z-index: 1;
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 2;
+  font-size: 1.2rem;
+  transform: translateY(-32px);
+}
+
+@media (max-width: 860px) {
+  .footer {
+    padding-top: 72px;
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding-top: 56px;
+  }
 }
 
 /* =====================================================
