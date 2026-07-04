@@ -2048,6 +2048,78 @@ body.lightbox-open {
   }
 }
 
+.turntable__tooltip {
+  position: absolute;
+  right: calc(100% + 16px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 240px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background-color: var(--color-navbar-solid);
+  border: 1px solid rgba(209, 187, 124, 0.25);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+/* Flechita apuntando hacia el disco */
+.turntable__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-navbar-solid);
+  border-right: 1px solid rgba(209, 187, 124, 0.25);
+  border-bottom: 1px solid rgba(209, 187, 124, 0.25);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.turntable__tooltip strong {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.turntable__tooltip span {
+  font-size: 0.74rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.turntable:hover .turntable__tooltip,
+.turntable:focus-within .turntable__tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .turntable__tooltip {
+    max-width: 180px;
+    padding: 8px 12px;
+  }
+}
+
 /* =====================================================
   ACCESIBILIDAD
 ===================================================== */
