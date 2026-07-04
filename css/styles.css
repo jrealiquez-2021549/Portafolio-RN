@@ -1462,7 +1462,7 @@ section[id] {
 .footer__inner {
   position: relative;
   z-index: 2;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transform: translateY(-32px);
 }
 
