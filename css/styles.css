@@ -1694,7 +1694,7 @@ body.lightbox-open {
   max-height: 100%;
   object-fit: contain;
   border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: none;
 }
 
 /* ---- Controles: efecto glass con acento dorado en hover ---- */
@@ -1755,11 +1755,11 @@ body.lightbox-open {
 }
 
 .lightbox__arrow--prev {
-  left: 10px;
+  left: -70px;
 }
 
 .lightbox__arrow--next {
-  right: 10px;
+  right: -70px;
 }
 
 /* ---- Navegador de posición: entre la foto y el listado ---- */
@@ -1793,6 +1793,7 @@ body.lightbox-open {
 /* ---- Listado de miniaturas: todas las fotos del proyecto ---- */
 .lightbox__thumbs {
   display: flex;
+  justify-content: center;
   gap: 10px;
   width: 100%;
   padding: 4px 2px 6px;
@@ -1858,11 +1859,11 @@ body.lightbox-open {
   }
 
   .lightbox__arrow--prev {
-    left: 4px;
+    left: -10px;
   }
 
   .lightbox__arrow--next {
-    right: 4px;
+    right: -10px;
   }
 
   .lightbox__close {
@@ -1873,6 +1874,10 @@ body.lightbox-open {
   .lightbox__thumb {
     width: 64px;
     height: 44px;
+  }
+
+  .lightbox__frame {
+    padding: 0 44px;
   }
 }
 
