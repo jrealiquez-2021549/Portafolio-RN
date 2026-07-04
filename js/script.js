@@ -80,20 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------------------------------
         5) Reveal al hacer scroll
         Las secciones (Datos, Habilidades, Proyectos) se
-        marcan como visibles solo cuando el usuario baja
-        hasta ellas, así la pastilla de "Descripción" y el
-        margen de triángulos no se ven desde Inicio.
+        marcan como visibles cuando el usuario baja hasta
+        ellas, y se vuelven a ocultar si el usuario sube y
+        la sección sale de pantalla, para que el efecto se
+        repita en ambas direcciones.
     ------------------------------------------------- */
     const revealSections = document.querySelectorAll('main .section');
 
     if ('IntersectionObserver' in window && revealSections.length) {
         const revealObserver = new IntersectionObserver(
-        (entries, obs) => {
+        (entries) => {
             entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                obs.unobserve(entry.target); // se revela una sola vez
-            }
+            entry.target.classList.toggle('is-visible', entry.isIntersecting);
             });
         },
         {

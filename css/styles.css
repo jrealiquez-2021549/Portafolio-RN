@@ -660,6 +660,20 @@ section[id] {
   user-select: none;
 }
 
+@media (max-width: 860px) {
+  .section__margin {
+    height: 90px;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+@media (max-width: 480px) {
+  .section__margin {
+    height: 60px;
+  }
+}
+
 .section__badge {
   position: absolute;
   top: 0;
@@ -1561,8 +1575,16 @@ section[id] {
     justify-content: center;
   }
 
+  .hero {
+    padding-bottom: 150px;
+  }
+
   .hero__scroll {
-    bottom: 90px;
+    bottom: 48px;
+  }
+
+  .hero__cv-btn {
+    margin-top: 28px;
   }
 
   .section--datos {
@@ -1589,15 +1611,26 @@ section[id] {
   }
 
   .hero__stats {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 18px;
+    justify-content: initial;
   }
 
   .hero__stats-group {
-    padding-left: 0;
-    border-left: none;
-    align-items: center;
+    display: contents;
+  }
+
+  .hero__stat {
+    text-align: left;
+  }
+
+  .hero__cv-btn {
+    grid-column: auto;
+    justify-self: start;
+    align-self: end;
+    margin-top: 0;
   }
 
   .hero__stats-group:first-child {
@@ -1606,7 +1639,7 @@ section[id] {
   }
 
   .hero__scroll {
-    bottom: 78px;
+    bottom: 68px;
   }
 
   .section--datos {
